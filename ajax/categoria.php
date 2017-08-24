@@ -30,6 +30,15 @@ switch ($_GET["op"]){
         $rspta = $categoria->verCategoria($idcategoria);
         echo json_encode($rspta);
         break;
+    case 'desactivar':
+        $rspta=$categoria->desactivarCategoria($idcategoria);
+        echo $rspta ? "Categoria actualizada" : "Error no se puede desactivar la categoria";
+    break;
+
+    case 'activar':
+        $rspta=$categoria->activarCategoria($idcategoria);
+        echo $rspta ? "Categoria actualizada" : "Error no se puede activar la categoria";
+    break;
 
     case 'listar':
         $rspta = $categoria->listCategorias();
@@ -37,8 +46,12 @@ switch ($_GET["op"]){
         
         while ($reg=$rspta->fetch_object()){
             $data[] = array(
-                "0"=>'<button class="btn btn-warning" onclick="mostrar('.$reg->id_categoria.')"><i class="fa fa-pencil"></i>  Editar</button>',
-                "1"=>$reg->nombre_categoria
+                "0"=>($reg->condicion) ? '<button class="btn btn-warning" onclick="mostrar('.$reg->id_categoria.')"><i class="fa fa-pencil"></i>  Editar</button>'.
+                    ' <button class="btn btn-danger" onclick="desactivar('.$reg->id_categoria.')"><i class="fa fa-close"></i> Desactivar</button>':
+                    '<button class="btn btn-warning" onclick="mostrar('.$reg->id_categoria.')"><i class="fa fa-pencil"></i>  Editar</button>'.
+                    ' <button class="btn btn-primary" onclick="activar('.$reg->id_categoria.')"><i class="fa fa-check"></i> Activar</button>',
+                "1"=>$reg->nombre_categoria,
+                "2"=>($reg->condicion) ? '<span class="label bg-green">Activo</span>' : '<span class="label bg-red">Inactivo</span>'
             );
         }
         $results = array(

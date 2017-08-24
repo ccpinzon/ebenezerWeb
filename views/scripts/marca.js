@@ -1,5 +1,7 @@
+/**
+ * Created by cristhianpinzon on 23/08/17.
+ */
 var tabla;
-// funcion siempre al inicio
 
 function init() {
 
@@ -10,12 +12,12 @@ function init() {
         guardaryeditar(e);
     })
 }
-//funcion limpiar
 
 function clean() {
-    $("#idcategoria").val("");
+    $("#idmarca").val("");
     $("#nombre").val("");
 }
+
 // funcion mostrar formulario recibe true o false
 function showForm(flag) {
     clean();
@@ -29,14 +31,12 @@ function showForm(flag) {
     }
 }
 
-
 // funcion cancelar form
 
 function cancelForm() {
     clean();
     showForm(false);
 }
-
 // funcion listar
 
 function listar() {
@@ -52,7 +52,7 @@ function listar() {
         ],
 
         "ajax": {
-            url: '../ajax/categoria.php?op=listar',
+            url: '../ajax/marca.php?op=listar',
             type: "get",
             dataType : "json",
             error: function (e) {
@@ -65,7 +65,6 @@ function listar() {
 
     }).DataTable();
 }
-
 function guardaryeditar(e) {
     e.preventDefault();
     $('#btnGuardar').prop("disabled",true);
@@ -73,7 +72,7 @@ function guardaryeditar(e) {
 
 
     $.ajax({
-        url: "../ajax/categoria.php?op=guardaryeditar",
+        url: "../ajax/marca.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -89,44 +88,16 @@ function guardaryeditar(e) {
     clean();
 }
 
-function mostrar(idcategoria) {
-    $.post("../ajax/categoria.php?op=mostrar",{idcategoria : idcategoria}, function (data,status) {
+function mostrar(idmarca) {
+    $.post("../ajax/marca.php?op=mostrar",{idmarca : idmarca}, function (data,status) {
         data = JSON.parse(data);
         showForm(true);
 
-        $("#nombre").val(data.nombre_categoria);
-        $("#idcategoria").val(data.id_categoria);
+        $("#nombre").val(data.nombre_marca);
+        $("#idmarca").val(data.id_marca);
     })
 }
 
-function desactivar(idcategoria) {
-    // bootbox libreria que sirve para mostrar mesajitos de alerta
 
-    bootbox.confirm("Seguro que desea desactivar la categoria? ", function(result){
-
-        if (result){
-            $.post("../ajax/categoria.php?op=desactivar",{idcategoria:idcategoria},function (e) {
-                bootbox.alert(e);
-                tabla.ajax.reload();
-            });
-        }
-
-    })
-}
-
-function activar(idcategoria) {
-    // bootbox libreria que sirve para mostrar mesajitos de alerta
-
-    bootbox.confirm("Seguro que desea activar la categoria? ", function(result){
-
-        if (result){
-            $.post("../ajax/categoria.php?op=activar",{idcategoria:idcategoria},function (e) {
-                bootbox.alert(e);
-                tabla.ajax.reload();
-            });
-        }
-
-    })
-}
 
 init();

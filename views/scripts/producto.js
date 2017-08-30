@@ -20,6 +20,8 @@ function init() {
         $("#idmarca").selectpicker('refresh');
     })
 
+    $("#imagenmuestra").hide();
+
 }
 //funcion limpiar
 
@@ -28,6 +30,8 @@ function clean() {
     $("#nombre").val("");
     $("#descripcion").val("");
     $("#cantidad").val("");
+    $("#imagenmuestram").attr("src","");
+    $("#imagenactual").val("");
 }
 // funcion mostrar formulario recibe true o false
 function showForm(flag) {
@@ -36,9 +40,11 @@ function showForm(flag) {
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled",false);
+        $("#btnAgregar").hide();
     }else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
+        $("#btnAgregar").show();
     }
 }
 
@@ -115,6 +121,9 @@ function mostrar(idproducto) {
         $("#nombre").val(data.nombre_producto);
         $("#precio").val(data.precio_producto);
         $("#descripcion").val(data.descripcion_producto);
+        $("#imagenmuestra").show();
+        $("#imagenmuestra").attr("src","../files/productos/"+data.imagen_producto);
+        $("#imagenactual").val(data.imagen_producto);
         $("#cantidad").val(data.cantidad_producto);
         $("#idcategoria").val(data.id_categoria);
         $("#id_marca").val(data.id_marca);

@@ -26,7 +26,7 @@ switch ($_GET["op"]){
 
         if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name'])){
 
-            $imagen = "";
+            $imagen = $_POST["imagenactual"];
 
         }else {
             $ext = explode(".", $_FILES["imagen"]["name"]);

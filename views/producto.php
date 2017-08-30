@@ -11,7 +11,7 @@ require "header.php";
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h1 class="box-title">Producto <button class="btn btn-success" onclick="showForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                        <h1 class="box-title">Producto <button class="btn btn-success" id="btnAgregar" onclick="showForm(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -91,6 +91,8 @@ require "header.php";
                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <label>Imagen: </label>
                                 <input class="form-control" type="file" name="imagen" id="imagen" >
+                                <input type="hidden" name="imagenactual" id="imagenactual">
+                                <img src="" width="150px" height="120px" id="imagenmuestra">
                             </div>
 
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">

@@ -249,96 +249,100 @@
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="62" parent="13" name="id_marca">
+    <column id="62" parent="13" name="imagen_producto">
       <Position>6</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(120)|0</DataType>
     </column>
-    <column id="63" parent="13" name="id_categoria">
+    <column id="63" parent="13" name="id_marca">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="64" parent="13" name="condicion">
+    <column id="64" parent="13" name="id_categoria">
       <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="13" name="condicion">
+      <Position>9</Position>
       <DataType>tinyint(1)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;1&apos;</DefaultExpression>
     </column>
-    <index id="65" parent="13" name="fk_PRODUCTO_CATEGORIA1_idx">
+    <index id="66" parent="13" name="fk_PRODUCTO_CATEGORIA1_idx">
       <ColNames>id_categoria</ColNames>
     </index>
-    <index id="66" parent="13" name="fk_PRODUCTO_MARCA_idx">
+    <index id="67" parent="13" name="fk_PRODUCTO_MARCA_idx">
       <ColNames>id_marca</ColNames>
     </index>
-    <key id="67" parent="13" name="PRIMARY">
+    <key id="68" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_producto</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="68" parent="13" name="fk_PRODUCTO_MARCA">
+    <foreign-key id="69" parent="13" name="fk_PRODUCTO_MARCA">
       <ColNames>id_marca</ColNames>
       <RefSchemaName>ebenezermarket_bd</RefSchemaName>
       <RefTableName>MARCA</RefTableName>
       <RefColNames>id_marca</RefColNames>
     </foreign-key>
-    <foreign-key id="69" parent="13" name="fk_PRODUCTO_CATEGORIA1">
+    <foreign-key id="70" parent="13" name="fk_PRODUCTO_CATEGORIA1">
       <ColNames>id_categoria</ColNames>
       <RefSchemaName>ebenezermarket_bd</RefSchemaName>
       <RefTableName>CATEGORIA</RefTableName>
       <RefColNames>id_categoria</RefColNames>
     </foreign-key>
-    <column id="70" parent="14" name="id_proveedor">
+    <column id="71" parent="14" name="id_proveedor">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="71" parent="14" name="nombre_proveedor">
+    <column id="72" parent="14" name="nombre_proveedor">
       <Position>2</Position>
       <DataType>varchar(45)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="72" parent="14" name="contacto_proveedor">
+    <column id="73" parent="14" name="contacto_proveedor">
       <Position>3</Position>
       <DataType>varchar(45)|0</DataType>
     </column>
-    <key id="73" parent="14" name="PRIMARY">
+    <key id="74" parent="14" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_proveedor</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="74" parent="15" name="id_usuario">
+    <column id="75" parent="15" name="id_usuario">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="75" parent="15" name="nombres_usuario">
+    <column id="76" parent="15" name="nombres_usuario">
       <Position>2</Position>
       <DataType>varchar(80)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="76" parent="15" name="email_usuario">
+    <column id="77" parent="15" name="email_usuario">
       <Position>3</Position>
       <DataType>varchar(60)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="77" parent="15" name="tipo_usuario">
+    <column id="78" parent="15" name="tipo_usuario">
       <Position>4</Position>
       <DataType>char(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="78" parent="15" name="hashpass_usuario">
+    <column id="79" parent="15" name="hashpass_usuario">
       <Position>5</Position>
       <DataType>varchar(180)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="79" parent="15" name="telefono_usuario">
+    <column id="80" parent="15" name="telefono_usuario">
       <Position>6</Position>
       <DataType>varchar(30)|0</DataType>
     </column>
-    <key id="80" parent="15" name="PRIMARY">
+    <key id="81" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_usuario</ColNames>
       <Primary>1</Primary>

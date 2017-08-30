@@ -23,6 +23,8 @@
     <link rel="stylesheet" type="text/css" href="../public/datatables/jquery.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../public/datatables/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="../public/datatables/responsive.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-select.min.css">
+
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -99,7 +101,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="articulo.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
+                        <li><a href="producto.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
                         <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
                     </ul>
                 </li>

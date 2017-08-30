@@ -9,14 +9,25 @@ function init() {
     $("#formulario").on("submit",function (e) {
         guardaryeditar(e);
     })
+    // cargar el select de la categoria
 
+    $.post("../ajax/producto.php?op=selectCategoria", function (r) {
+        $("#idcategoria").html(r);
+        $("#idcategoria").selectpicker('refresh');
+    })
+    $.post("../ajax/producto.php?op=selectMarca", function (r) {
+        $("#idmarca").html(r);
+        $("#idmarca").selectpicker('refresh');
+    })
 
 }
 //funcion limpiar
 
 function clean() {
-    $("#idcategoria").val("");
+    $("#idproducto").val("");
     $("#nombre").val("");
+    $("#descripcion").val("");
+    $("#cantidad").val("");
 }
 // funcion mostrar formulario recibe true o false
 function showForm(flag) {
@@ -54,7 +65,7 @@ function listar() {
         ],
 
         "ajax": {
-            url: '../ajax/categoria.php?op=listar',
+            url: '../ajax/producto.php?op=listar',
             type: "get",
             dataType : "json",
             error: function (e) {
@@ -62,7 +73,7 @@ function listar() {
             }
         },
         "bDestroy":true,
-        "iDisplayLength": 5,// paginacion
+        "iDisplayLength": 8,// paginacion
         "order": [[0,"desc"]]// ordnamiento columna, orden
 
     }).DataTable();
@@ -75,7 +86,7 @@ function guardaryeditar(e) {
 
 
     $.ajax({
-        url: "../ajax/categoria.php?op=guardaryeditar",
+        url: "../ajax/producto.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -91,23 +102,32 @@ function guardaryeditar(e) {
     clean();
 }
 
-function mostrar(idcategoria) {
-    $.post("../ajax/categoria.php?op=mostrar",{idcategoria : idcategoria}, function (data,status) {
+function mostrar(idproducto) {
+    $.post("../ajax/producto.php?op=mostrar",{idproducto : idproducto}, function (data,status) {
         data = JSON.parse(data);
         showForm(true);
 
-        $("#nombre").val(data.nombre_categoria);
+        $("#idproducto").val(data.id_producto);
         $("#idcategoria").val(data.id_categoria);
+        $("#idcategoria").selectpicker('refresh');
+        $("#idmarca").val(data.id_marca);
+        $("#idmarca").selectpicker('refresh');
+        $("#nombre").val(data.nombre_producto);
+        $("#precio").val(data.precio_producto);
+        $("#descripcion").val(data.descripcion_producto);
+        $("#cantidad").val(data.cantidad_producto);
+        $("#idcategoria").val(data.id_categoria);
+        $("#id_marca").val(data.id_marca);
     })
 }
 
-function desactivar(idcategoria) {
+function desactivar(idproducto) {
     // bootbox libreria que sirve para mostrar mesajitos de alerta
 
-    bootbox.confirm("Seguro que desea desactivar la categoria? ", function(result){
+    bootbox.confirm("Seguro que desea desactivar el producto? ", function(result){
 
         if (result){
-            $.post("../ajax/categoria.php?op=desactivar",{idcategoria:idcategoria},function (e) {
+            $.post("../ajax/producto.php?op=desactivar",{idproducto:idproducto},function (e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
@@ -116,13 +136,13 @@ function desactivar(idcategoria) {
     })
 }
 
-function activar(idcategoria) {
+function activar(idproducto) {
     // bootbox libreria que sirve para mostrar mesajitos de alerta
 
-    bootbox.confirm("Seguro que desea activar la categoria? ", function(result){
+    bootbox.confirm("Seguro que desea activar el producto? ", function(result){
 
         if (result){
-            $.post("../ajax/categoria.php?op=activar",{idcategoria:idcategoria},function (e) {
+            $.post("../ajax/producto.php?op=activar",{idproducto:idproducto},function (e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });

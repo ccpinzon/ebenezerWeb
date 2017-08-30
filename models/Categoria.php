@@ -54,5 +54,13 @@ Class Categoria {
         return execQuery($sql);
     }
 
+    public function select(){
+
+        $sql = "SELECT * FROM CATEGORIA WHERE  condicion = 1";
+        return execQuery($sql);
+    }
+
+
+
 }
 ?>

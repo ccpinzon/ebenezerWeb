@@ -1,4 +1,11 @@
 <?php
+ob_start();
+session_start();
+
+if (!isset($_SESSION["nombres"])){
+    header("Location: login.html");
+}
+else {
 require "header.php";
 ?>
 <!--Contenido-->
@@ -116,3 +123,10 @@ require "footer.php";
 ?>
 
 <script type="text/javascript" src="scripts/producto.js"></script>
+    <?php
+}
+
+ob_end_flush();
+
+
+?>

@@ -54,16 +54,16 @@
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="../public/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Juan Carlos Arcila</span>
+                            <img src="../files/usuarios/usericon.svg" class="user-image" alt="User Image">
+                            <span class="hidden-xs"><?php echo $_SESSION['nombres']?></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <img src="../public/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="../files/usuarios/usericon.svg" class="img-circle" alt="User Image">
                                 <p>
-                                    www.incanatoit.com - Desarrollando Software
-                                    <small>www.youtube.com/jcarlosad7</small>
+                                    Ebenezer Market - Administrador
+                                    <?php echo $_SESSION['nombres']?>
                                 </p>
                             </li>
 
@@ -71,7 +71,7 @@
                             <li class="user-footer">
 
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Cerrar</a>
+                                    <a href="../ajax/usuario.php?op=salir" class="btn btn-default btn-flat">Salir</a>
                                 </div>
                             </li>
                         </ul>
@@ -91,7 +91,7 @@
                 <li class="header"></li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-tasks"></i> <span>Escritorio</span>
+<!--                        <i class="fa fa-tasks"></i> <span>Escritorio</span>-->
                     </a>
                 </li>
                 <li class="treeview">
@@ -101,8 +101,9 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="producto.php"><i class="fa fa-circle-o"></i> Artículos</a></li>
+                        <li><a href="producto.php"><i class="fa fa-circle-o"></i> Productos</a></li>
                         <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Categorías</a></li>
+                        <li><a href="marca.php"><i class="fa fa-circle-o"></i> Marcas</a></li>
                     </ul>
                 </li>
 
@@ -114,7 +115,6 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="ingreso.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                        <li><a href="proveedor.php"><i class="fa fa-circle-o"></i> Proveedores</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -135,7 +135,6 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="usuario.php"><i class="fa fa-circle-o"></i> Usuarios</a></li>
-                        <li><a href="permiso.php"><i class="fa fa-circle-o"></i> Permisos</a></li>
 
                     </ul>
                 </li>
@@ -145,7 +144,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>
+<!--                        <li><a href="consultacompras.php"><i class="fa fa-circle-o"></i> Consulta Compras</a></li>-->
                     </ul>
                 </li>
                 <li class="treeview">
@@ -154,7 +153,7 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="consultaventas.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>
+<!--                        <li><a href="consultaventas.php"><i class="fa fa-circle-o"></i> Consulta Ventas</a></li>-->
                     </ul>
                 </li>
                 <li>

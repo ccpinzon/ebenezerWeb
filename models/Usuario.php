@@ -56,6 +56,12 @@ class Usuario
         $sql = "SELECT * FROM USUARIO WHERE id_usuario = '$idusuario'";
         return execQuerySimpleRow($sql);
     }
+
+    public function verUsuarioEmail($email){
+
+        $sql = "SELECT * FROM USUARIO WHERE email_usuario = '$email' AND tipo_usuario = 'C'";
+        return execQuerySimpleRow($sql);
+    }
     public function listUsuarioA(){
 
         $sql = "SELECT * FROM USUARIO";

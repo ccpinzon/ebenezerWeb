@@ -26,7 +26,15 @@ switch ($_GET["op"]){
         if ($pass1 == $pass2){
             $clavehash = hash("SHA256",$pass2);
             $rspta = $usuario->insertCliente($nombres,$email,$clavehash,$tel);
-            echo json_encode(array("validate" => $rspta));
+            //echo json_encode(array("validate" => $rspta));
+            if ($rspta){
+                $datosUsuario = $usuario->verUsuarioEmail($email);
+                $aux = json_encode($datosUsuario);
+                $data = json_decode($aux);
+
+                $data->validate = true;
+                echo json_encode($data);
+            }
         }else {
             echo json_encode(array("validate" => false));
         }

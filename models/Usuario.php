@@ -29,6 +29,15 @@ class Usuario
 
     }
 
+    public function insertCliente($nombres,$email,$hashpass,$tel){
+
+        $sql = "INSERT INTO USUARIO 
+                (nombres_usuario, email_usuario, tipo_usuario, hashpass_usuario, telefono_usuario) VALUES 
+                ('$nombres','$email','C','$hashpass','$tel')";
+        return execQuery($sql);
+
+    }
+
     public function edit($idusuario,$nombres,$email,$hashpass,$tel){
 
         $sql = "UPDATE USUARIO SET 
@@ -62,6 +71,13 @@ class Usuario
     // verificar acceso al sistema
 
     public function verificar($email,$clave){
+        $sql = "SELECT id_usuario,nombres_usuario,email_usuario,telefono_usuario FROM USUARIO
+                WHERE email_usuario = '$email' AND hashpass_usuario = '$clave'";
+        return execQuery($sql);
+    }
+
+
+    public function verificarCliente($email,$clave){
         $sql = "SELECT id_usuario,nombres_usuario,email_usuario,telefono_usuario FROM USUARIO
                 WHERE email_usuario = '$email' AND hashpass_usuario = '$clave'";
         return execQuery($sql);

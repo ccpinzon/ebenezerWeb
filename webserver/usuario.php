@@ -43,6 +43,22 @@ switch ($_GET["op"]){
 
     case 'validarSesion':
 
+        $clavehash = hash("SHA256",$pass1);
+
+        $rspta = $usuario->verificarCliente($email,$clavehash);
+        $fetch=$rspta->fetch_object();
+
+
+        if (isset($fetch)){
+            $datosUsuario = $usuario->verUsuarioEmail($email);
+            $aux = json_encode($datosUsuario);
+            $data = json_decode($aux);
+            $data->validate = true;
+            echo json_encode($data);
+        }else{
+            echo json_encode(array("validate" => false ));
+        }
+
         break;
 
 }

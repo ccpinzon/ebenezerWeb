@@ -85,7 +85,7 @@ class Usuario
 
     public function verificarCliente($email,$clave){
         $sql = "SELECT id_usuario,nombres_usuario,email_usuario,telefono_usuario FROM USUARIO
-                WHERE email_usuario = '$email' AND hashpass_usuario = '$clave'";
+                WHERE email_usuario = '$email' AND hashpass_usuario = '$clave' AND tipo_usuario = 'C'";
         return execQuery($sql);
     }
 

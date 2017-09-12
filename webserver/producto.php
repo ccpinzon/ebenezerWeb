@@ -15,10 +15,10 @@ switch ($_GET["op"]){
 
     case 'listarProductos':
 
-        $rspta = $producto->listProducto();
+        $rspta = $producto->listProductoActivos();
         $return_arr = Array();
 
-        while ($r = $rspta->fetch_assoc()){
+        while ($r = $rspta->fetch_assoc()) {
 
             $row_array['id_producto'] = $r['id_producto'];
             $row_array['id_categoria'] = $r['id_categoria'];
@@ -30,12 +30,17 @@ switch ($_GET["op"]){
             $row_array['condicion'] = $r['condicion'];
             $row_array['marca'] = $r['marca'];
             $row_array['categoria'] = $r['categoria'];
-            $row_array['imagen_producto'] = 'https://ebenezer-market.000webhostapp.com/files/productos/'.$r['imagen_producto'];
-            array_push($return_arr,$row_array);
+            if ($r['imagen_producto'] == '') {
+                $row_array['imagen_producto'] = 'https://www.jumadidirecto.es/image/jumadidirecto.es/system/not_found.jpg';
+            } else {
+                $row_array['imagen_producto'] = 'https://ebenezer-market.000webhostapp.com/files/productos/' . $r['imagen_producto'];
+            }
+            array_push($return_arr, $row_array);
 
+
+            echo json_encode($return_arr, JSON_UNESCAPED_UNICODE);
         }
-
-        echo json_encode($return_arr,JSON_UNESCAPED_UNICODE);
 }
+
 
 ?>

@@ -68,6 +68,16 @@ class Producto
         return execQuery($sql);
     }
 
+    public function listProductoActivos(){
+
+        $sql = "SELECT p.id_producto,p.id_categoria,p.id_marca,p.nombre_producto,p.precio_producto,p.descripcion_producto,p.descripcion_producto,p.cantidad_producto,p.condicion,m.nombre_marca as marca,c.nombre_categoria as categoria,p.imagen_producto
+                FROM PRODUCTO p 
+                INNER  JOIN CATEGORIA c on c.id_categoria = p.id_categoria
+                INNER JOIN MARCA m on m.id_marca = p.id_marca
+                WHERE p.condicion = 1";
+        return execQuery($sql);
+    }
+
 
 
 

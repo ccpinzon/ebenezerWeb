@@ -7,8 +7,11 @@
  */
 
 require_once "../models/Producto.php";
+require_once "../models/Categoria.php";
 
 $producto = new Producto();
+
+$categoria =  new Categoria();
 
 
 switch ($_GET["op"]){
@@ -37,9 +40,23 @@ switch ($_GET["op"]){
             }
             array_push($return_arr, $row_array);
 
-
-            echo json_encode($return_arr, JSON_UNESCAPED_UNICODE);
         }
+            echo json_encode($return_arr, JSON_UNESCAPED_UNICODE);
+        break;
+
+    case 'listarCategorias':
+
+        $rspta = $categoria->listCategoriasActivas();
+        $return_arr = Array();
+
+        while ($r = $rspta->fetch_assoc()){
+            $row_array['id_categoria'] = $r['id_categoria'];
+            $row_array['nombre_categoria'] = $r['nombre_categoria'];
+            array_push($return_arr, $row_array);
+        }
+        echo json_encode($return_arr, JSON_UNESCAPED_UNICODE);
+        break;
+
 }
 
 

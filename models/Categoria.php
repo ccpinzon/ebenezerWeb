@@ -44,6 +44,12 @@ Class Categoria {
         return execQuery($sql);
     }
 
+    public function listCategoriasActivas(){
+
+        $sql = "SELECT * FROM CATEGORIA WHERE condicion = 1";
+        return execQuery($sql);
+    }
+
     public function  desactivarCategoria($idcat){
         $sql = "UPDATE CATEGORIA SET condicion = 0 WHERE id_categoria = '$idcat'";
         return execQuery($sql);

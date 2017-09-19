@@ -29,7 +29,7 @@ switch ($_GET["op"]){
             $row_array['nombre_producto'] = $r['nombre_producto'];
             $row_array['precio_producto'] = $r['precio_producto'];
             $row_array['descripcion_producto'] = $r['descripcion_producto'];
-            $row_array['cantidad_producto'] = $r['cantidad_producto'];
+            $row_array ['cantidad_producto'] = $r['cantidad_producto'];
             $row_array['condicion'] = $r['condicion'];
             $row_array['marca'] = $r['marca'];
             $row_array['categoria'] = $r['categoria'];

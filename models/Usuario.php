@@ -89,6 +89,12 @@ class Usuario
         return execQuery($sql);
     }
 
+    public function insertarDireccion($direccion,$iduser){
+        $sql = "INSERT INTO direccion (nombre_direccion,id_usuario) VALUES 
+                ('$direccion','$iduser')";
+        return execQuery($sql);
+    }
+
 
 
 

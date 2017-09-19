@@ -17,6 +17,9 @@ $pass2 = isset($_REQUEST["pass2"]) ? cleanString(($_REQUEST["pass2"]))  : "";
 $tel = isset($_REQUEST["tel"]) ? cleanString(($_REQUEST["tel"]))  : "";
 
 
+$dir = isset($_REQUEST["dir"]) ? cleanString(($_REQUEST["dir"]))  : "";
+$iduser = isset($_REQUEST["iduser"]) ? cleanString(($_REQUEST["iduser"]))  : "";
+
 
 
 switch ($_GET["op"]){
@@ -55,6 +58,19 @@ switch ($_GET["op"]){
             $data = json_decode($aux);
             $data->validate = true;
             echo json_encode($data);
+        }else{
+            echo json_encode(array("validate" => false ));
+        }
+
+        break;
+
+        case 'insertarDireccion':
+
+        $rspta = $usuario->insertarDireccion($dir,$iduser);
+
+
+        if ($rspta){
+            echo json_encode(array("validate" => true));
         }else{
             echo json_encode(array("validate" => false ));
         }

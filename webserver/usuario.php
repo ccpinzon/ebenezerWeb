@@ -64,7 +64,8 @@ switch ($_GET["op"]){
 
         break;
 
-        case 'insertarDireccion':
+    case 'insertarDireccion':
+
 
         $rspta = $usuario->insertarDireccion($dir,$iduser);
 
@@ -76,6 +77,21 @@ switch ($_GET["op"]){
         }
 
         break;
+
+    case 'listarDirecciones':
+
+        $rspta = $usuario->listarDirecciones($iduser);
+        $return_arr = Array();
+
+        while ($r = $rspta->fetch_assoc()){
+            $row_array['id_direccion'] = $r['id_direccion'];
+            $row_array['nombre_direccion'] = $r['nombre_direccion'];
+            array_push($return_arr,$row_array);
+        }
+
+        echo json_encode($return_arr,JSON_UNESCAPED_UNICODE);
+        break;
+
 
 }
 

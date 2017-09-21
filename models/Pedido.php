@@ -39,7 +39,45 @@ class Pedido
         return execQuerySimpleRow($sql);
     }
 
+    public function listaIdPedidos($iduser){
 
+        $sql = "SELECT DISTINCT id_pedido_cliente AS id_pedido 
+                FROM PEDIDO_CLIENTE PE
+                INNER JOIN DETALLE_VENTA DE ON DE.id_pedido = PE.id_pedido_cliente
+                WHERE id_usuario = $iduser";
+        //echo $sql;
+        return execQuery($sql);
+
+    }
+
+    public function listarPedidosUsuario($iduser, $id_pedido)
+    {
+
+        $sql =  "SELECT det.id_pedido,SUM(pr.precio_producto * det.cantidad) total,dir.nombre_direccion direccion, pc.fecha_pedido_cliente fecha,pc.estado_pedido_cliente estado, usr.id_usuario,usr.email_usuario 
+                  FROM DETALLE_VENTA det 
+                  INNER JOIN PEDIDO_CLIENTE pc ON pc.id_pedido_cliente = det.id_pedido 
+                  INNER JOIN PRODUCTO pr ON pr.id_producto = det.id_producto 
+                  INNER JOIN DIRECCION dir ON dir.id_direccion = pc.id_direccion 
+                  INNER JOIN USUARIO usr on usr.id_usuario = pc.id_usuario 
+                  WHERE pc.id_usuario = $iduser 
+                  AND det.id_pedido = $id_pedido ";
+
+        return execQuerySimpleRow($sql);
+
+    }
+
+    public function listarProductosPorPedido($iduser,$id_pedido){
+        $sql = "SELECT pr.id_producto,pr.nombre_producto,pr.imagen_producto,pr.precio_producto,det.cantidad 
+                FROM DETALLE_VENTA det 
+                INNER JOIN PEDIDO_CLIENTE pc ON pc.id_pedido_cliente = det.id_pedido
+                INNER JOIN PRODUCTO pr ON pr.id_producto = det.id_producto
+                WHERE pc.id_usuario = $iduser
+                AND id_pedido = $id_pedido";
+
+        //echo $sql;
+
+        return execQuery($sql);
+    }
 
 
 }
